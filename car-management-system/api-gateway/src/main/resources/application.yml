@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: api-gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      server:
+        routes:
+          - id: auth-service
+            uri: http://localhost:8081
+            predicates:
+              - Path=/api/auth/**
+          - id: car-service
+            uri: http://localhost:8082
+            predicates:
+              - Path=/api/cars/**
+          - id: rental-service
+            uri: http://localhost:8083
+            predicates:
+              - Path=/api/rentals/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

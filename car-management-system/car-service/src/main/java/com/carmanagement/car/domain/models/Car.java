@@ -1,0 +1,149 @@
+package com.carmanagement.car.domain.models;
+
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "cars")
+public class Car {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long carId;
+
+    @Column(nullable = false)
+    private String brand;
+
+    @Column(nullable = false)
+    private String model;
+
+    @Column(nullable = false)
+    private Integer year;
+
+    private String owner;
+
+    @Column(name = "owner_id")
+    private Long ownerId; // Admin user ID who created this car
+
+    @Column(nullable = false)
+    private Boolean available = true;
+
+    private BigDecimal dailyPrice;
+
+    private Integer usageCount = 0;
+
+    @Column(name = "image_data", columnDefinition = "TEXT")
+    private String imageData; // Base64 encoded image
+
+    private LocalDateTime createdAt;
+
+    // Constructors
+    public Car() {
+    }
+
+    public Car(String brand, String model, Integer year, String owner, BigDecimal dailyPrice) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.owner = owner;
+        this.dailyPrice = dailyPrice;
+        this.available = true;
+        this.createdAt = LocalDateTime.now();
+        this.usageCount = 0;
+    }
+
+    public Car(String brand, String model, Integer year, String owner, Long ownerId, BigDecimal dailyPrice,
+            String imageData) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.owner = owner;
+        this.ownerId = ownerId;
+        this.dailyPrice = dailyPrice;
+        this.imageData = imageData;
+        this.available = true;
+        this.createdAt = LocalDateTime.now();
+        this.usageCount = 0;
+    }
+
+    // Getters and Setters
+    public Long getCarId() {
+        return carId;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
+
+    public BigDecimal getDailyPrice() {
+        return dailyPrice;
+    }
+
+    public void setDailyPrice(BigDecimal dailyPrice) {
+        this.dailyPrice = dailyPrice;
+    }
+
+    public Integer getUsageCount() {
+        return usageCount;
+    }
+
+    public void setUsageCount(Integer usageCount) {
+        this.usageCount = usageCount;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(String imageData) {
+        this.imageData = imageData;
+    }
+}
