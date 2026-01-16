@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-home',
-    standalone: true,
-    imports: [CommonModule, RouterLink],
-    template: `
+  selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  template: `
     <div class="home-page">
       <!-- Hero Section -->
       <section class="hero">
@@ -111,13 +111,13 @@ import { RouterLink } from '@angular/router';
       <section class="cta">
         <div class="container text-center">
           <h2 class="cta-title">Ready to Hit the Road?</h2>
-          <p class="cta-subtitle">Join thousands of satisfied customers who trust us for their car rental needs.</p>
+          <p class="cta-subtitle">Be one of our satisfied customers who trust us for their car rental needs.</p>
           <a routerLink="/cars" class="btn btn-accent btn-lg">Start Exploring</a>
         </div>
       </section>
     </div>
   `,
-    styles: [`
+  styles: [`
     .hero {
       padding: var(--space-16) 0;
       min-height: 80vh;

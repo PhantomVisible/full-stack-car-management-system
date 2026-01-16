@@ -41,7 +41,8 @@ import { CarResponse } from '../../../models/car.model';
             <!-- Left: Car Image & Gallery -->
             <div class="car-gallery">
               <div class="main-image card">
-                <div class="image-placeholder">
+                <img *ngIf="car.imageData" [src]="car.imageData" [alt]="car.brand + ' ' + car.model" class="car-detail-img" />
+                <div *ngIf="!car.imageData" class="image-placeholder">
                   <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                     <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"/>
                     <circle cx="7" cy="17" r="2"/>
@@ -226,6 +227,17 @@ import { CarResponse } from '../../../models/car.model';
       align-items: center;
       justify-content: center;
       background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .car-detail-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .image-placeholder {

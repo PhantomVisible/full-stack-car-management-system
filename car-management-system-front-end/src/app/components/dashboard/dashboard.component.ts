@@ -122,7 +122,8 @@ import { UserResponse } from '../../models/auth.model';
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
                                         <div class="car-min-thumb">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <img *ngIf="car.imageData" [src]="car.imageData" [alt]="car.brand" class="car-thumb-img" />
+                                            <svg *ngIf="!car.imageData" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                 <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"/>
                                             </svg>
                                         </div>
@@ -229,7 +230,8 @@ import { UserResponse } from '../../models/auth.model';
               <div class="card-body">
                 <div class="popular-car">
                   <div class="car-image-placeholder">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <img *ngIf="stats.mostPopularCar.imageData" [src]="stats.mostPopularCar.imageData" [alt]="stats.mostPopularCar.brand + ' ' + stats.mostPopularCar.model" class="popular-car-img" />
+                    <svg *ngIf="!stats.mostPopularCar.imageData" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"/>
                       <circle cx="7" cy="17" r="2"/>
                       <circle cx="17" cy="17" r="2"/>
@@ -321,7 +323,8 @@ import { UserResponse } from '../../models/auth.model';
     .brand-bar { height: 8px; background: #e2e8f0; border-radius: var(--radius-full); overflow: hidden; }
     .brand-fill { height: 100%; background: linear-gradient(90deg, var(--color-secondary), var(--color-secondary-light)); border-radius: var(--radius-full); }
     .popular-car { display: flex; align-items: center; gap: var(--space-4); }
-    .car-image-placeholder { width: 80px; height: 80px; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--color-text-light); }
+    .car-image-placeholder { width: 80px; height: 80px; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--color-text-light); overflow: hidden; }
+    .popular-car-img { width: 100%; height: 100%; object-fit: cover; }
     .car-details { flex: 1; display: flex; flex-direction: column; }
     .car-brand { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: var(--color-secondary); }
     .car-model { font-size: 1.125rem; font-weight: 700; color: var(--color-primary); }
@@ -336,7 +339,8 @@ import { UserResponse } from '../../models/auth.model';
     .fleet-table th { text-align: left; padding: var(--space-3) var(--space-4); color: var(--color-text-light); font-weight: 500; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e2e8f0; }
     .fleet-table td { padding: var(--space-3) var(--space-4); vertical-align: middle; border-bottom: 1px solid #f1f5f9; }
     .fleet-table tr:last-child td { border-bottom: none; }
-    .car-min-thumb { width: 32px; height: 32px; background: #f1f5f9; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-text-light); }
+    .car-min-thumb { width: 32px; height: 32px; background: #f1f5f9; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--color-text-light); overflow: hidden; }
+    .car-thumb-img { width: 100%; height: 100%; object-fit: cover; }
     .action-buttons { display: flex; gap: var(--space-2); }
     .btn-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); background: #f1f5f9; color: var(--color-text-light); border: none; cursor: pointer; transition: all 0.2s; }
     .btn-icon:hover { background: var(--color-secondary); color: white; }
